@@ -17,6 +17,21 @@ namespace WebSocketYatzy
         }
 
 
+        public override string ToString()
+        {
+            var ret = "{\"players\": [";
+            foreach(var player in this.Players)
+            {
+                ret += player.ToString() + ",";
+            }
+            if (ret.LastIndexOf(',') == ret.Length - 1)
+                ret = ret.Substring(0, ret.Length - 1);
+            ret += "]}";
+            return ret;
+
+        }
+
+
 
         
     }
@@ -304,7 +319,8 @@ namespace WebSocketYatzy
         UserRolled,
         UserScored,
         UserChangedDiceHold,
-        TurnChanged
+        TurnChanged,
+        GameInfo
     }
 
     public class YatzyGameEvent
@@ -315,14 +331,20 @@ namespace WebSocketYatzy
         public override string ToString()
         {
             if(this.EventArg != null && this.EventArg.Length > 0)
-              return "{\"event\":\"" + this.Event.ToString() + "\", \"player\":\"" + this.Player.UserName + "\",\"eventArg\":" + this.EventArg + "}";
+              return "{\"event\":\"" + this.Event.ToString() + "\", \"player\":\"" + this.Player.UserName + "\",\"clientId\":\"" + this.Player.UserGuid.ToString() + "\",\"eventArg\":" + this.EventArg + "}";
             else
-              return "{\"event\":\"" + this.Event.ToString() + "\", \"player\":\"" + this.Player.UserName + "\"}";
+                return "{\"event\":\"" + this.Event.ToString() + "\", \"player\":\"" + this.Player.UserName + "\",\"clientId\":\"" + this.Player.UserGuid.ToString() + "\"}";
         }
         public YatzyGameEvent(YatzyGameEventType t, YatzyPlayer p)
         {
             this.Event = t;
             this.Player = p;
+        }
+        public YatzyGameEvent(YatzyGameEventType t, YatzyPlayer p, string arg)
+        {
+            this.Event = t;
+            this.Player = p;
+            this.EventArg = arg;
         }
     }
     public class YatzyDiceState
@@ -432,17 +454,25 @@ namespace WebSocketYatzy
         public YatzyScoreCard ScoreCard { get; set; }
         public YatzyRollState RollState { get; set; }
         public bool ItsMyTurn { get; set; }
+        public Guid UserGuid { get; set; }
         public YatzyPlayer()
         {
            
         }
-        public YatzyPlayer(string username, string ip, int playerOrder)
+        public YatzyPlayer(string username, string ip)
         {
             this.UserName = username;
             this.IPAddress = ip;
             this.ScoreCard = new YatzyScoreCard();
             this.RollState = new YatzyRollState();
-            this.ItsMyTurn = false;            
+            this.ItsMyTurn = false;
+            this.UserGuid = Guid.NewGuid();
+            Console.WriteLine("client id: " + this.UserGuid.ToString());
+        }
+
+        public override string ToString()
+        {
+            return "{\"userName\":\"" + this.UserName + "\",\"clientId\":\"" + this.UserGuid + "\",\"score\":" + this.ScoreCard.ToString() + ",\"itsHisTurn\":" + this.ItsMyTurn.ToString().ToLower() + ",\"rollsLeft\":" + this.RollState.RollsLeft + "}";
         }
     }
 
