@@ -1,0 +1,13 @@
+c:\users\janra\documents\visual studio 2013\Projects\WebsocketServer\WebsocketServer\bin\Debug\WebsocketServer.exe.config
+c:\users\janra\documents\visual studio 2013\Projects\WebsocketServer\WebsocketServer\obj\Debug\WebsocketServer.csprojResolveAssemblyReference.cache
+c:\users\janra\documents\visual studio 2013\Projects\WebsocketServer\WebsocketServer\bin\Debug\WebsocketServer.exe
+c:\users\janra\documents\visual studio 2013\Projects\WebsocketServer\WebsocketServer\bin\Debug\WebsocketServer.pdb
+c:\users\janra\documents\visual studio 2013\Projects\WebsocketServer\WebsocketServer\obj\Debug\WebsocketServer.exe
+c:\users\janra\documents\visual studio 2013\Projects\WebsocketServer\WebsocketServer\obj\Debug\WebsocketServer.pdb
+C:\Users\jan\Documents\Yatzybackend-master\bin\Debug\WebsocketServer.exe.config
+C:\Users\jan\Documents\Yatzybackend-master\obj\Debug\WebsocketServer.exe
+C:\Users\jan\Documents\Yatzybackend-master\obj\Debug\WebsocketServer.pdb
+C:\Users\jan\Documents\Yatzybackend-master\bin\Debug\WebsocketServer.exe
+C:\Users\jan\Documents\Yatzybackend-master\bin\Debug\Newtonsoft.Json.dll
+C:\Users\jan\Documents\Yatzybackend-master\obj\Debug\WebsocketServer.csprojResolveAssemblyReference.cache
+C:\Users\jan\Documents\Yatzybackend-master\bin\Debug\WebsocketServer.pdb
